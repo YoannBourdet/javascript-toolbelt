@@ -10,14 +10,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/YoannnBourdet/javascript-toolbelt.git"
+    "url": "git+https://github.com/YoannBourdet/javascript-toolbelt.git"
   },
   "author": "Yoann Bourdet",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/YoannnBourdet/javascript-toolbelt/issues"
+    "url": "https://github.com/YoannBourdet/javascript-toolbelt/issues"
   },
-  "homepage": "https://github.com/YoannnBourdet/javascript-toolbelt#readme",
+  "homepage": "https://github.com/YoannBourdet/javascript-toolbelt#readme",
   "devDependencies": {
     "babel": "^6.5.2",
     "babel-core": "^6.7.4",
