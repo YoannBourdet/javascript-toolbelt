@@ -1,0 +1,36 @@
+{
+  "name": "javascript-toolbelt",
+  "version": "1.0.0",
+  "description": "javascript-toolbelt es6 version",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack -d --progress --colors --watch",
+    "built": "webpack -p",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/YoannnBourdet/javascript-toolbelt.git"
+  },
+  "author": "Yoann Bourdet",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/YoannnBourdet/javascript-toolbelt/issues"
+  },
+  "homepage": "https://github.com/YoannnBourdet/javascript-toolbelt#readme",
+  "devDependencies": {
+    "babel": "^6.5.2",
+    "babel-core": "^6.7.4",
+    "babel-loader": "^6.2.4",
+    "babel-plugin-add-module-exports": "^0.1.2",
+    "babel-plugin-transform-es2015-destructuring": "^6.6.5",
+    "babel-polyfill": "^6.7.4",
+    "babel-preset-es2015": "^6.6.0",
+    "eslint": "^2.5.1",
+    "eslint-config-airbnb": "^6.2.0",
+    "eslint-loader": "^1.3.0",
+    "eslint-plugin-react": "^4.2.3",
+    "pkginfo": "^0.4.0",
+    "webpack": "^1.12.14"
+  }
+}
