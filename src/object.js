@@ -1,3 +1,7 @@
+/*
+  eslint
+  no-unused-vars: 0
+*/
 
 export function * iterate(obj) {
   for (const key in obj) {
@@ -7,7 +11,7 @@ export function * iterate(obj) {
   }
 }
 
-export function values(obj) {
+export function getValues(obj) {
   const newArray = [];
   for (const key in obj) {
     if (obj.hasOwnProperty(key)) {
@@ -17,7 +21,7 @@ export function values(obj) {
   return newArray;
 }
 
-export function keys(obj) {
+export function getKeys(obj) {
   const newArray = [];
   for (const { key } of iterate(obj)) {
     newArray.push(key);
@@ -30,6 +34,26 @@ export function map(obj, cb) {
   for (const { entry } of iterate(obj)) {
     if (cb) {
       const { key, val } = cb(entry);
+      newObject[key] = val;
+    }
+  }
+  return newObject;
+}
+
+export function pick(obj, ...keys) {
+  const newObject = {};
+  keys.forEach((key) => {
+    if (typeof obj[key] !== 'undefined') {
+      newObject[key] = obj[key];
+    }
+  });
+  return newObject;
+}
+
+export function omit(obj, ...keys) {
+  const newObject = {};
+  for (const { key, val } of iterate(obj)) {
+    if (!keys.includes(key)) {
       newObject[key] = val;
     }
   }

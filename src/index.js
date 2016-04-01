@@ -1,9 +1,2 @@
-import { Array } from './array';
-import { Object } from './object';
-
-const jst = {
-  Array,
-  Object,
-};
-
-export default jst;
+export * from './array';
+export * from './object';
