@@ -3,15 +3,15 @@
   no-unused-vars: 0
 */
 
-export function * iterate(obj) {
+export const iterate = function * iterate(obj) {
   for (const key in obj) {
     if (obj.hasOwnProperty(key)) {
       yield { key, val: obj[key] };
     }
   }
-}
+};
 
-export function getValues(obj) {
+export const getValues = (obj) => {
   const newArray = [];
   for (const key in obj) {
     if (obj.hasOwnProperty(key)) {
@@ -19,17 +19,17 @@ export function getValues(obj) {
     }
   }
   return newArray;
-}
+};
 
-export function getKeys(obj) {
+export const getKeys = (obj) => {
   const newArray = [];
   for (const { key } of iterate(obj)) {
     newArray.push(key);
   }
   return newArray;
-}
+};
 
-export function map(obj, cb) {
+export const map = (obj, cb) => {
   const newObject = {};
   for (const { entry } of iterate(obj)) {
     if (cb) {
@@ -38,9 +38,17 @@ export function map(obj, cb) {
     }
   }
   return newObject;
-}
+};
 
-export function pick(obj, ...keys) {
+export const invert = (obj) => {
+  const newObject = {};
+  for (const { key, val } of iterate(obj)) {
+    newObject[val] = key;
+  }
+  return newObject;
+};
+
+export const pick = (obj, ...keys) => {
   const newObject = {};
   keys.forEach((key) => {
     if (typeof obj[key] !== 'undefined') {
@@ -48,9 +56,9 @@ export function pick(obj, ...keys) {
     }
   });
   return newObject;
-}
+};
 
-export function omit(obj, ...keys) {
+export const omit = (obj, ...keys) => {
   const newObject = {};
   for (const { key, val } of iterate(obj)) {
     if (!keys.includes(key)) {
@@ -58,12 +66,55 @@ export function omit(obj, ...keys) {
     }
   }
   return newObject;
-}
+};
 
-export function clone(obj) {
-  return Object.assign({}, obj);
-}
+export const hasKey = (obj, key) => {
+  let bool = false;
+  for (const k in obj) {
+    if (k === key) {
+      bool = true;
+    }
+  }
+  return bool;
+};
 
-export function isObject(obj) {
-  return typeof obj === 'object' || obj instanceof Object || typeof obj === 'function';
-}
+export const hasProperty = (obj, property) => {
+  let bool = false;
+  for (const val of obj) {
+    if (val === property) {
+      bool = true;
+    }
+  }
+  return bool;
+};
+
+export const isMatch = (obj, properties) => {
+  let bool = false;
+  for (const { key, val } of iterate(obj)) {
+    if (properties[key] === val) {
+      bool = true;
+    }
+  }
+  return bool;
+};
+
+export const clone = (obj) => Object.assign({}, obj);
+
+export const extend = (destination, source) =>
+Object.assign({}, destination, source);
+
+export const extendOwn = (destination, source) => {
+  const newObject = {};
+  for (const key in source) {
+    if (source.hasOwnProperty(key)) {
+      newObject[key] = source[key];
+    }
+  }
+  return Object.assign({}, destination, newObject);
+};
+
+export const fillObject = (defaultObj, obj) =>
+Object.assign({}, obj, defaultObj);
+
+export const isObject = (obj) =>
+typeof obj === 'object' || obj instanceof Object || typeof obj === 'function';
