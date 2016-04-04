@@ -4,6 +4,6 @@
 
 Javascript toolbelt
 
-## description
+## Description
 
-## usage
+## Usage
