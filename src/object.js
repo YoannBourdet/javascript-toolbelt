@@ -29,9 +29,19 @@ export const getKeys = (obj) => {
   return newArray;
 };
 
+export const filter = (obj, cb) => {
+  const newObj = {};
+  for (const { key, val } of iterate(obj)) {
+    if (cb({ key, val })) {
+      newObj[key] = val;
+    }
+  }
+  return newObj;
+};
+
 export const map = (obj, cb) => {
   const newObject = {};
-  for (const { entry } of iterate(obj)) {
+  for (const entry of iterate(obj)) {
     if (cb) {
       const { key, val } = cb(entry);
       newObject[key] = val;
