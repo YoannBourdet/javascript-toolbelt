@@ -1,7 +1,4 @@
-/*
-  eslint
-  no-unused-vars: 0
-*/
+/* eslint no-unused-vars: 0 */
 
 export const iterate = function * iterate(obj) {
   for (const key in obj) {

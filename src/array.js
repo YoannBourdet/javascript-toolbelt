@@ -1,7 +1,4 @@
-/*
-  eslint
-  no-unused-vars: 0
-*/
+/* eslint no-unused-vars: 0 */
 
 export const getFirst = (arr, n = 1) => {
   const newArr = n < 0 ? arr.slice(0, n) : arr.slice(0, Math.abs(n));
@@ -42,3 +39,24 @@ export const removeDoubleKeys = (arr) => {
   });
   return newArr;
 };
+
+/*
+ * transform array to string
+ * separate word by ',' and the two last by '&',
+ * you can overide this default behavoir
+ */
+export const sentencify = (arr, {
+  join = ' , ',
+  last = ' & ',
+} = {}) => (
+  arr.reduce((agg, x, i) => {
+    switch (i) {
+      case 0:
+        return `${agg}${x}`;
+      case arr.length - 1:
+        return `${agg}${last}${x}`;
+      default:
+        return `${agg}${join}${x}`;
+    }
+  }, '')
+);
