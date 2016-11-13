@@ -11,12 +11,12 @@ export const getLast = (arr, n = 1) => {
 };
 
 export const ignoreLast = (arr, n = 1) => {
-  const newArr = n < 0 ? arr.slice(0, +`-${n}`) : arr.slice(0, n);
+  const newArr = n === 0 ? arr : arr.slice(0, +`-${Math.abs(n)}`);
   return newArr;
 };
 
 export const ignoreFirst = (arr, n = 1) => {
-  const newArr = n < 0 ? arr.slice(n) : arr.slice(Math.abs(n));
+  const newArr = n === 0 ? arr : arr.slice(Math.abs(n));
   return newArr;
 };
 
